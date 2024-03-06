@@ -53,21 +53,21 @@ session_start();
 					Username
 					<i class="fas fa-user"></i>
 				</label>
-				<input placeholder="Username" name="Name" type="text" required="">
+				<input placeholder="Username" name="Name" type="text">
 			</div>
 			<div class="form-style-agile">
 				<label>
 					Password
 					<i class="fas fa-unlock-alt"></i>
 				</label>
-				<input placeholder="Password" name="Password" type="password" required="">
+				<input placeholder="Password" name="Password" type="password">
 			</div>
 			<!-- checkbox -->
 			<div class="wthree-text">
 				<ul>
 					<li>
 						<label class="anim">
-							<input type="checkbox" class="checkbox" required="">
+							<input type="checkbox" class="checkbox">
 							<span>Remember me</span>
 						</label>
 					</li>
@@ -77,8 +77,10 @@ session_start();
 				</ul>
 			</div>
 			<!-- //checkbox -->
-			<input type="submit" value="Log In">
+			<input type="submit" value="Log In" name="logIn">
+			<input type="submit" value="Sign Up" name="signUp">
 			<!-- social icons -->
+			
 			<div class="footer-social">
 				<h2>Or</h2>
 				<ul>
@@ -123,20 +125,24 @@ session_start();
 
 <?php
 	require_once("../../config/connection.php");
-	if (isset($_POST['Name']) && !empty($_POST['Name']) &&
-	isset($_POST['Password']) && !empty($_POST['Password'])) {
-		$name = $_POST['Name'];
-		$password = $_POST['Password'];
+	if (isset($_POST['logIn']) && !empty($_POST['logIn'])) {
+		if (isset($_POST['Name']) && !empty($_POST['Name']) &&
+		isset($_POST['Password']) && !empty($_POST['Password'])) {
+			$name = $_POST['Name'];
+			$password = $_POST['Password'];
 
-		$query = "SELECT * FROM users WHERE username = '$name' AND password = '$password';";
-		$result = mysqli_query($conn, $query);
-		$isset = mysqli_num_rows($result);
-		if($isset) {
-			$_SESSION['is_login'] = 1;
-			$_SESSION["logIn"] = "1";
-			header("Location: ../../index.php");
-		} else {
-			echo "Error";
+			$query = "SELECT * FROM users WHERE username = '$name' AND password = '$password';";
+			$result = mysqli_query($conn, $query);
+			$isset = mysqli_num_rows($result);
+			if($isset) {
+				$_SESSION['is_login'] = 1;
+				$_SESSION["logIn"] = "1";
+				header("Location: ../../index.php");
+			} else {
+				echo "Error";
+			}
 		}
+	} else if (isset($_POST["signUp"]) && !empty($_POST["signUp"])) {
+		header("Location: ../../Registrate/web/index.php");
 	}
 ?>

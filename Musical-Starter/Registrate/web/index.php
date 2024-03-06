@@ -2,6 +2,9 @@
 Author URL: http://w3layouts.com
 License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
+<?php
+	session_start();
+?>
 -->
 <!DOCTYPE HTML>
 <html lang="zxx">
@@ -50,35 +53,35 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					Username
 					<i class="fas fa-user"></i>
 				</label>
-				<input placeholder="Username" name="Name" type="text" required="">
+				<input placeholder="Username" name="Name" type="text" >
 			</div>
 			<div class="form-style-agile">
 				<label>
 					Password
 					<i class="fas fa-unlock-alt"></i>
 				</label>
-				<input placeholder="Password" name="Password" type="password" required="">
+				<input placeholder="Password" name="Password" type="password">
 			</div>
 			<div class="form-style-agile">
 				<label>
 					Email
 					<i class="fas fa-envelope"></i>
 				</label>
-				<input placeholder="Email" name="Email" type="text" required="">
+				<input placeholder="Email" name="Email" type="text">
 			</div>
 			<div class="form-style-agile">
 				<label>
 					Phone
 					<i class="fas fa-phone"></i>
 				</label>
-				<input placeholder="Phone" name="Phone" type="text" required="">
+				<input placeholder="Phone" name="Phone" type="text">
 			</div>
 			<!-- checkbox -->
 			<div class="wthree-text">
 				<ul>
 					<li>
 						<label class="anim">
-							<input type="checkbox" class="checkbox" required="">
+							<input type="checkbox" class="checkbox">
 							<span>Remember me</span>
 						</label>
 					</li>
@@ -89,6 +92,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			</div>
 			<!-- //checkbox -->
 			<input type="submit" value="Sign UP" name="signUp">
+			<input type="submit" value="Log In" name="logIn">
 			<!-- social icons -->
 			<div class="footer-social">
 				<h2>Or</h2>
@@ -133,22 +137,26 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 </html>
 <?php
 	require_once("../../config/connection.php");
-	if (isset($_POST['Name']) && !empty($_POST['Name']) && 
-	isset($_POST['Password']) && !empty($_POST['Password']) &&
-	isset($_POST['Email']) && !empty($_POST['Email']) &&
-	isset($_POST['Phone']) && !empty($_POST['Phone'])) {
-		$name = $_POST['Name'];
-		$pass = $_POST['Password'];
-		$email = $_POST['Email'];
-		$phone = $_POST['Phone'];
+	if (isset($_POST['signUp']) && !empty($_POST['signUp'])) {
+		if (isset($_POST['Name']) && !empty($_POST['Name']) && 
+		isset($_POST['Password']) && !empty($_POST['Password']) &&
+		isset($_POST['Email']) && !empty($_POST['Email']) &&
+		isset($_POST['Phone']) && !empty($_POST['Phone'])) {
+			$name = $_POST['Name'];
+			$pass = $_POST['Password'];
+			$email = $_POST['Email'];
+			$phone = $_POST['Phone'];
 
-		$query = "INSERT INTO users (`username`, `password`, `email`, `phone`) 
-          VALUES ('$name', '$pass', '$email', '$phone')";
+			$query = "INSERT INTO users (`username`, `password`, `email`, `phone`) 
+			VALUES ('$name', '$pass', '$email', '$phone')";
 
-		mysqli_query($conn, $query);
-		$_SESSION["login"] = "1";
+			mysqli_query($conn, $query);
+			$_SESSION["logIn"] = "1";
 
-		header("Location: ../../index.php");
-		
+			header("Location: ../../index.php");
+			
+		}
+	} else if (isset($_POST['logIn']) && !empty($_POST['logIn'])) {
+		header("Location: ../../Login/web/index.php");
 	}
 ?>

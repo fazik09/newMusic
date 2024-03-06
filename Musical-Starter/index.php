@@ -4,6 +4,7 @@ Author URL: http://w3layouts.com
 -->
 <?php
     session_start();
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -121,7 +122,7 @@ Author URL: http://w3layouts.com
                 <div class="cont-ser-position">
                     <nav class="navigation">
                             <!-- <input type="button" class="btn btn-primary" id="checkbox" value="enter"> -->
-                           <a href="Login/web/index.php" class="btn btn-danger ">Вход</a>     
+                           <a href="Login/web/index.php" class="btn btn-danger " style="margin-left: 20px;">Вход</a>     
                         </nav>
                 </div>
                 <div style="margin-right: 10px;"></div>
@@ -140,7 +141,7 @@ Author URL: http://w3layouts.com
                         <div class="cont-ser-position">
                         <nav class="navigation">
                                 <!-- <input type="button" class="btn btn-primary" id="checkbox" value="enter"> -->
-                            <input type="submit" class="btn btn-danger " value="Выход"></a>     
+                            <input type="submit" class="btn btn-danger " style="margin-left: 30px;" value="Выход"></a>     
                             </nav>
                         </div>
                     </form>
