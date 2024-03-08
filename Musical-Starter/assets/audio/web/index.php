@@ -1,5 +1,3 @@
-						<?=$_GET['id']
-						?>
 <!--
 	Author: W3layouts
 	Author URL: http://w3layouts.com
@@ -77,7 +75,7 @@
 				
 				<div id="equalizer">
 					<audio autoplay controls loop>
-						<source src="../../musics/<?php echo $_GET['id']; ?>.mp3" type='audio/mpeg'>
+						<source src="../../musics/<?php echo $_GET['id']; ?>" type='audio/mpeg'>
 						<source src="music/Enigma_Endless-Quest.mp3" type='audio/mpeg'>	
 					</audio>
 				</div>

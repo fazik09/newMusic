@@ -39,7 +39,7 @@
             color: #555;
         }
 
-        input {
+        input,select,file {
             width: 100%;
             padding: 10px;
             margin-bottom: 15px;
@@ -91,14 +91,37 @@
         <h2>Add Music <i class="fas fa-music"></i></h2>
 
         <!-- Форма для добавления музыки и песни -->
-        <form  action="musicadd.php"  method="GET"  id="addMusicForm">
-            <label for="musicName">Music Name:</label>
-            <input type="text" id="musicName" name="name" required>
+        <form  action="musicadd.php"  method="POST"  id="addMusicForm" enctype="multipart/form-data">
+            <label for="musicName">Select your Music:</label>
+            <input type="file" name="fileToUpload">
             <label for="artist">Artist:</label>
-            <input type="text" id="artist" required>
-            <label for="songName">Song Name:</label>
-            <input type="text" id="songName" required>
-            <button type="submit" class="add-music-button">Add Music <i class="fas fa-plus"></i></button>
+            <select name="artistName" id="artist">
+                <?php
+                    require_once("config/connection.php");
+                    $sql = "SELECT fullname FROM artist;";
+                    $result = mysqli_query($conn, $sql);
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        ?>
+                            <option value="<?=$row['fullname']?>"><?=$row['fullname']?></option>
+                        <?php
+                    }
+                ?>
+            </select>
+
+            <label for="songName">Song Albom:</label>
+            <select name="albomName" id="albom">
+                <?php
+                    require_once("config/connection.php");
+                    $sql = "SELECT fullname FROM alboms;";
+                    $result = mysqli_query($conn, $sql);
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        ?>
+                            <option value="<?=$row['fullname']?>"><?=$row['fullname']?></option>
+                        <?php
+                    }
+                ?>
+            </select>
+            <button type="submit" class="add-music-button" name="submit">Add Music <i class="fas fa-plus"></i></button>
         </form>
 
         <!-- Список добавленной музыки и песен -->
