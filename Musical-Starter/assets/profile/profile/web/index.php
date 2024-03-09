@@ -21,8 +21,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
 <link rel="stylesheet" href="css/font-awesome.min.css" />
 <link rel="stylesheet" href="css/smoothbox.css" type='text/css' media="all" />
-<link href="//fonts.googleapis.com/css?family=Pathway+Gothic+One" rel="stylesheet">
-<link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
+<!-- <link href="//fonts.googleapis.com/css?family=Pathway+Gothic+One" rel="stylesheet">
+<link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'> -->
 <style>
 			.stylish-button {
             padding: 15px 30px;

@@ -1,11 +1,62 @@
 <?php
 
-        require_once("config/connection.php");
+    require_once("config/connection.php");
+    
+    $target_dir = "assets/musics/";
+    $name = basename($_FILES['fileToUpload']['name']);
+    $target_file = $target_dir.basename($_FILES['fileToUpload']['name']);
+    
+    $uploadOk = 1;
+    $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 
-        if (isset($_GET['name']) && !empty($_GET['name'])) {
-            $music = $_GET['name'];
-            $query = "INSERT INTO music (fullname) VALUE ('$music')";
-            mysqli_query($conn, $query);
+    if (isset($_POST['submit'])) {
+        $uploadOk = 1;
+        $artist = $_POST['artistName'];
+        $albom = $_POST['albomName'];
+        $query = "SELECT id FROM artist WHERE fullname = '$artist';";
+        $result = mysqli_query($conn, $query);
+        $row = mysqli_fetch_assoc($result);
+        $q = "SELECT id FROM alboms WHERE fullname = '$albom';";
+        $r = mysqli_query($conn, $q);
+        $artist_id = "";
+        while ($row = mysqli_fetch_assoc($result)) {
+            $artist_id = $row['id'];
+        }
+        $albom_id = "";
+        while ($rows = mysqli_fetch_assoc($r)) {
+            $albom_id = $rows['id'];
+        }
+        $sql = "INSERT INTO music(fullname, artist_id, albom_id) VALUES ('$name', '$artist_id', '$albom_id');";
+        mysqli_query($conn, $sql);
+    }
+
+    if (file_exists($target_file)) {
+        echo "Файл уже существует";
+        $uploadOk = 0;
+    }
+
+    if ($_FILES['fileToUpload']['size'] > 500000000) {
+        echo $name;
+        echo "Файл имеет большой размер";
+        $uploadOk = 0;
+    }
+    if ($imageFileType != 'mp3' && $imageFileType != 'm4a') {
+        echo "Такой формат не доступен";
+        $uploadOk = 0;
+    }
+
+    if ($uploadOk == 0) { 
+        echo "Ошибка при загрузки файла.";
+    } else {
+        if (move_uploaded_file($_FILES['fileToUpload']['tmp_name'], $target_file)) {
+            ?>
+            <script>
+                alert("Uploaded file");
+            </script>
+            <?php
+            echo "Файл " . basename($_FILES['fileToUpload']['name']) . " загружен ";
+            $fileName = basename($_FILES['fileToUpload']['name']);  
             header("Location: musics.php");
         }
+    }
 ?>
