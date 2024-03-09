@@ -72,7 +72,7 @@ session_start();
 						</label>
 					</li>
 					<li>
-						<a href="#">Forgot Password?</a>
+						<a href="../../index.php">Home</a>
 					</li>
 				</ul>
 			</div>

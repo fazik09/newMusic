@@ -86,7 +86,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 						</label>
 					</li>
 					<li>
-						<a href="#">Forgot Password?</a>
+						<a href="../../index.php">Home</a>
 					</li>
 				</ul>
 			</div>

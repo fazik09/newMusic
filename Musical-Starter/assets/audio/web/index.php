@@ -71,7 +71,7 @@
 			
 			<div class="relative_left">
 				
-				<h2 id="title">Music Equalizer</h2>
+				<h2 id="title">Music <front style="color: #fff; text-decoration: underline;"><?=$_GET['id'];?></front></h2>
 				
 				<div id="equalizer">
 					<audio autoplay controls loop>

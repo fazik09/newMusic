@@ -11,6 +11,17 @@
 
     if (isset($_POST['submit'])) {
         $uploadOk = 1;
+        $ssss = "SELECT * FROM music WHERE fullname = '$name';";
+        $reeeee = mysqli_query($conn, $ssss);
+        $count = mysqli_num_rows($reeeee);
+        if ($count) {
+            ?>
+            <script>
+                alert("Такой файл уже существует! Пожалуйста выберите другой файл!");
+            </script>
+            <?php
+            header("Location: addMusic.php");
+        }
         $artist = $_POST['artistName'];
         $albom = $_POST['albomName'];
         $query = "SELECT id FROM artist WHERE fullname = '$artist';";
@@ -28,11 +39,6 @@
         }
         $sql = "INSERT INTO music(fullname, artist_id, albom_id) VALUES ('$name', '$artist_id', '$albom_id');";
         mysqli_query($conn, $sql);
-    }
-
-    if (file_exists($target_file)) {
-        echo "Файл уже существует";
-        $uploadOk = 0;
     }
 
     if ($_FILES['fileToUpload']['size'] > 500000000) {
