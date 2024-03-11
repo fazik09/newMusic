@@ -248,16 +248,16 @@ Author URL: http://w3layouts.com
             </header>
             <h3 class="title-style text-center mb-sm-5 mb-4">Наши лучшие <span>Альмбоы</span></h3>
             <div class="row justify-content-center">
-            <?php 
-                require_once("config/connection.php");
-                $sql = "SELECT alboms.`fullname` AS fn, artist.`fullname` FROM artist
-                INNER JOIN alboms ON artist.`id` = alboms.`artist_id`;;";
-                $result = mysqli_query($conn, $sql);
-                while ($row = mysqli_fetch_assoc($result)) {
-                    $name = $row['fn'];
-                    $artistN = $row['fullname'];
-            ?>
-            <div class="col-lg-4 col-md-6 mt-lg-5 mt-4">
+                <?php 
+                    require_once("config/connection.php");
+                    $sql = "SELECT alboms.`fullname` AS fn, artist.`fullname` FROM artist
+                    INNER JOIN alboms ON artist.`id` = alboms.`artist_id`;;";
+                    $result = mysqli_query($conn, $sql);
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        $name = $row['fn'];
+                        $artistN = $row['fullname'];
+                        ?>
+                <div class="col-lg-4 col-md-6 mt-lg-5 mt-4">
                     <div class="blog-card-single">
                         <div class="grids5-info position-relative">
                             <img src="assets/images/c6.jpg" alt="" class="img-fluid" />
@@ -265,37 +265,40 @@ Author URL: http://w3layouts.com
                                 <h6>🎹</h6>
                             </div>
                         </div>
-                        <div class="content-main-top">
-                            <div class="content-top mb-4 mt-3">
-                                <ul class="list-unstyled d-flex align-items-center justify-content-between">
-                                    <li> <i class="fas fa-music"></i>Music</li>
-                                    <li> <i class="fas fa-calendar-alt"></i><?=$artistN?></li>
-                                </ul>
+                        <form method="post" action="albom_musics.php">
+                            <div class="content-main-top">
+                                <div class="content-top mb-4 mt-3">
+                                    <ul class="list-unstyled d-flex align-items-center justify-content-between">
+                                        <li> <i class="fas fa-music"></i>Music</li>
+                                        <li> <i class="fas fa-calendar-alt"></i><?=$artistN?></li>
+                                    </ul>
+                                </div>
+                                <h4><a href="packages.php"><?=$name?></a></h4>
+                                <p>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                                    <div class="top-content-border d-flex align-items-center justify-content-between mt-5 pt-4">
+                                        <ul class="rating-list">
+                                            <li><a href="#rate"><i class="fas fa-star" aria-hidden="true"></i>
+                                                </a></li>
+                                            <li><a href="#rate"><i class="fas fa-star" aria-hidden="true"></i>
+                                                </a></li>
+                                            <li><a href="#rate"><i class="fas fa-star" aria-hidden="true"></i>
+                                                </a></li>
+                                            <li><a href="#rate"><i class="fas fa-star" aria-hidden="true"></i>
+                                                </a></li>
+                                            <li><a href="#rate"><i class="fas fa-star" aria-hidden="true"></i>
+                                                </a></li>
+                                        </ul>
+                                        <input type="hidden" name="nameOfAlbom" value="<?=$name?>">
+                                        <input type="submit" name="Asubmit" class="btn btn-style" value="Подробнее">
+                                    </div>
+                                </div>
                             </div>
-                            <h4><a href="packages.php"><?=$name?></a></h4>
-                            <p>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                            <div class="top-content-border d-flex align-items-center justify-content-between mt-5 pt-4">
-                                <ul class="rating-list">
-                                    <li><a href="#rate"><i class="fas fa-star" aria-hidden="true"></i>
-                                        </a></li>
-                                    <li><a href="#rate"><i class="fas fa-star" aria-hidden="true"></i>
-                                        </a></li>
-                                    <li><a href="#rate"><i class="fas fa-star" aria-hidden="true"></i>
-                                        </a></li>
-                                    <li><a href="#rate"><i class="fas fa-star" aria-hidden="true"></i>
-                                        </a></li>
-                                    <li><a href="#rate"><i class="fas fa-star" aria-hidden="true"></i>
-                                        </a></li>
-                                </ul>
-                                <a class="btn btn-style" href="albom_musics.php">Подробнее</a>
-                            </div>
-                        </div>
+                        </form>
                     </div>
+                        <?php
+                    }
+                    ?>
                 </div>
-                    <?php
-                }
-                ?>
-            </div>
         </div>
     </div>
     <!-- //classes section -->

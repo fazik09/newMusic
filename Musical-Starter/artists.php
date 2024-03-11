@@ -216,12 +216,13 @@ Author URL: http://w3layouts.com
                         <div class="col-lg-4 col-sm-6 mt-5">
                             <div class="single-team">
                                 <div class="img-area">
-                                    <img src="Artists/<?=$name?>.jpg" class="img-fluid radius-image" alt="">
+                                    <img src="Artists/454.jpg" class="img-fluid radius-image" alt="">
                                     <div class="social">
                                         <ul class="list-inline">
                                             <li><a href="#url"><i class="fab fa-facebook-f"></i></a></li>
                                             <li><a href="#url"><i class="fab fa-twitter"></i></a></li>
                                             <li><a href="#url"><i class="fab fa-linkedin-in"></i></a></li>
+                                            <button type="submit" name="addMusic" class="music-button">Подробнее</button>
                                         </ul>
                                     </div>
                                 </div>
@@ -230,7 +231,6 @@ Author URL: http://w3layouts.com
                                     <input type="hidden" name="id" value="<?=$name?>">
                                         <h4><label name="name"><?=$name?></label></h4>
                                         <br><br>
-                                        <button type="submit" name="addMusic" class="music-button">Подробнее</button>
                                     </form>
                                     <?php 
                                         if ($_SESSION["logIn"] == "1") {

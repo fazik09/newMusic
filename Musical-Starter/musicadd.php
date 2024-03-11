@@ -26,7 +26,7 @@
         $albom = $_POST['albomName'];
         $query = "SELECT id FROM artist WHERE fullname = '$artist';";
         $result = mysqli_query($conn, $query);
-        $row = mysqli_fetch_assoc($result);
+        echo "<h1>".$artist."<h1>";
         $q = "SELECT id FROM alboms WHERE fullname = '$albom';";
         $r = mysqli_query($conn, $q);
         $artist_id = "";
@@ -37,10 +37,8 @@
         while ($rows = mysqli_fetch_assoc($r)) {
             $albom_id = $rows['id'];
         }
-        $sql = "INSERT INTO music(fullname, artist_id, albom_id) VALUES ('$name', '$artist_id', '$albom_id');";
-        mysqli_query($conn, $sql);
     }
-
+    
     if ($_FILES['fileToUpload']['size'] > 500000000) {
         echo $name;
         echo "Файл имеет большой размер";
@@ -54,6 +52,8 @@
     if ($uploadOk == 0) { 
         echo "Ошибка при загрузки файла.";
     } else {
+        $sql = "INSERT INTO music(fullname, artist_id, albom_id) VALUES ('$name', '$artist_id', '$albom_id');";
+        mysqli_query($conn, $sql);
         if (move_uploaded_file($_FILES['fileToUpload']['tmp_name'], $target_file)) {
             ?>
             <script>
