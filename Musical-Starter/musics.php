@@ -244,15 +244,7 @@ Author URL: http://w3layouts.com
                 </ul>
                 
             </div>
-            <?php 
-                if (isset ($_SESSION["logIn"]) && $_SESSION["logIn"] == "1") {
-            ?>
-            <form action="addMusic.php" method="post">
-                <button type="submit" name="addMusic" class="music-button">Добавить Музыку</button>
-            </form>
-            <?php 
-                }
-            ?>
+            
         </div>
     </section>
     <div style="margin: 30px 30px; width: 500px">
@@ -271,18 +263,7 @@ Author URL: http://w3layouts.com
                         </form>
                         
                     <?php 
-                        if (isset($_SESSION["logIn"]) && $_SESSION["logIn"] == "1") {
-                    ?>
-                    <form action="delete.php" method="get">
-                        <input type="hidden" name="id" value="<?php echo $row['fullname']; ?>">
-                        <button class="bright-music-button" name="delete"><i class="fas fa-trash-alt"></i>DELETE</button>
-                    </form>
-                         <br><br><br>
-                         <?php
-                        } 
-                        else {
-                            echo "<br><br>";
-                        }
+                    
                 }
                 ?>
             <!-- <button type="submit" class="bright-music-button">
