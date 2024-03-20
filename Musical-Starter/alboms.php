@@ -184,15 +184,7 @@ Author URL: http://w3layouts.com
                     <li><a href="index.php">Главная</a></li>
                     <li class="active"><i class="fas fa-angle-right mx-2"></i>Альбомы</li>
                 </ul>
-                <?php 
-                    if ($_SESSION["logIn"] == "1") {
-                ?>
-                <form action="addArtist.php" method="post">
-                    <button type="submit" name="addMusic" class="music-button">Добавить Альбомы</button>
-                </form>
-                <?php 
-                    }
-                ?>
+
             </div>
         </div>
     </section>

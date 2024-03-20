@@ -97,7 +97,7 @@
             <label for="artist">Artist:</label>
             <select name="artistName" id="artist">
                 <?php
-                    require_once("config/connection.php");
+                    require_once("../../config/connection.php");
                     $sql = "SELECT fullname FROM artist;";
                     $result = mysqli_query($conn, $sql);
                     while ($row = mysqli_fetch_assoc($result)) {
@@ -111,7 +111,7 @@
             <label for="songName">Song Albom:</label>
             <select name="albomName" id="albom">
                 <?php
-                    require_once("config/connection.php");
+                    require_once("../../config/connection.php");
                     $sql = "SELECT fullname FROM alboms;";
                     $result = mysqli_query($conn, $sql);
                     while ($row = mysqli_fetch_assoc($result)) {

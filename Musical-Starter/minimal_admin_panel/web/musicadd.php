@@ -1,8 +1,9 @@
 <?php
 
-    require_once("config/connection.php");
+global $conn;
+require_once("../../config/connection.php");
     
-    $target_dir = "assets/musics/";
+    $target_dir = "../../assets/musics/";
     $name = basename($_FILES['fileToUpload']['name']);
     $target_file = $target_dir.basename($_FILES['fileToUpload']['name']);
     
@@ -62,7 +63,7 @@
             <?php
             echo "Файл " . basename($_FILES['fileToUpload']['name']) . " загружен ";
             $fileName = basename($_FILES['fileToUpload']['name']);  
-            header("Location: musics.php");
+            header("Location: listMusics.php");
         }
     }
 ?>

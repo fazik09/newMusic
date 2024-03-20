@@ -244,15 +244,7 @@ Author URL: http://w3layouts.com
                 </ul>
                 
             </div>
-            <?php 
-                if ($_SESSION["logIn"] == "1") {
-            ?>
-            <form action="addMusic.php" method="post">
-                <button type="submit" name="addMusic" class="music-button">Добавить Музыку</button>
-            </form>
-            <?php 
-                }
-            ?>
+
         </div>
     </section>
     <div style="margin: 30px 30px; width: 500px">

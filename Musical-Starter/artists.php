@@ -185,15 +185,7 @@ Author URL: http://w3layouts.com
                     <li class="active"><i class="fas fa-angle-right mx-2"></i>Артисты</li>
                 </ul>
                 <br><br>
-                <?php 
-                    if ($_SESSION["logIn"] == "1") {
-                ?>
-                <form action="addArtist.php" method="post">
-                    <button type="submit" name="addMusic" class="music-button">Добавить артистов</button>
-                </form>
-                <?php 
-                    }
-                ?>
+               
             </div>
         </div>
     </section>
@@ -207,44 +199,35 @@ Author URL: http://w3layouts.com
             <div class="row mt-lg-5 mt-4">
                 <?php 
                     require_once("config/connection.php");
-                    $sql = "SELECT fullname FROM artist;";
+                    $sql = "SELECT fullname, img FROM artist;";
                     $result = mysqli_query($conn, $sql);
 
                     while ($row = mysqli_fetch_assoc($result)) {
                         $name = $row['fullname'];
+                        $img = $row['img'];
                 ?>
+                    <form action="assets/profile/profile/web/index.php" method="get">
                         <div class="col-lg-4 col-sm-6 mt-5">
                             <div class="single-team">
                                 <div class="img-area">
-                                    <img src="Artists/454.jpg" class="img-fluid radius-image" alt="">
+                                    <img src="Artists/<?php echo $img;?>" class="img-fluid radius-image" alt="">
                                     <div class="social">
                                         <ul class="list-inline">
                                             <li><a href="#url"><i class="fab fa-facebook-f"></i></a></li>
                                             <li><a href="#url"><i class="fab fa-twitter"></i></a></li>
                                             <li><a href="#url"><i class="fab fa-linkedin-in"></i></a></li>
+                                            <input type="hidden" name="id" value="<?=$name?>">
                                             <button type="submit" name="addMusic" class="music-button">Подробнее</button>
                                         </ul>
                                     </div>
                                 </div>
                                 <div class="img-text">
-                                    <form action="assets/profile/profile/web/index.php" method="GET">
-                                    <input type="hidden" name="id" value="<?=$name?>">
-                                        <h4><label name="name"><?=$name?></label></h4>
-                                        <br><br>
-                                    </form>
-                                    <?php 
-                                        if ($_SESSION["logIn"] == "1") {
-                                            ?>
-                                        <form action="deleteA.php" method="GET">
-                                            <input type="hidden" name="id" value="<?=$name?>">
-                                            <button type="submit" name="addMusic" class="music-button">Удалить</button>
-                                        </form>
-                                            <?php
-                                        }
-                                    ?>
+                                    <h4><label name="name"><?=$name?></label></h4>
+                                    <br><br>
                                 </div>
                             </div>
                         </div>
+                    </form>
                 <?php
                     }
                 ?>
