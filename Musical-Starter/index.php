@@ -145,6 +145,7 @@ Author URL: http://w3layouts.com
                             </nav>
                         </div>
                     </form>
+                    
                 <?php
                 }
                 ?>

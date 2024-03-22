@@ -244,24 +244,22 @@ Author URL: http://w3layouts.com
                 </ul>
                 
             </div>
-            <?php 
-                if ($_SESSION["logIn"] == "1") {
-            ?>
-            <form action="addMusic.php" method="post">
-                <button type="submit" name="addMusic" class="music-button">Добавить Музыку</button>
-            </form>
-            <?php 
-                }
-            ?>
+
         </div>
     </section>
     <div style="margin: 30px 30px; width: 500px">
         <?php
                 require_once("config/connection.php");
-                $query = "SELECT music.`fullname` FROM music
-                INNER JOIN alboms ON music.`albom_id` = alboms.`id`;";
+                $nnn = $_POST['nameOfAlbom'];
+                $sql = "SELECT id from alboms WHERE fullname = '$nnn';";
+                $w = mysqli_query( $conn, $sql);
+                $roww = mysqli_fetch_array($w);
+                $id = $roww['id'];
+                $query = "SELECT fullname FROM music
+                WHERE albom_id = '$id';";
                 $result = mysqli_query($conn, $query);
-                while ($row = mysqli_fetch_array($result)) {
+                
+                while ($row = mysqli_fetch_assoc($result)) {
                     ?>
                     <form action="assets/audio/web/index.php" method="get">
                         <input type="hidden" name="id" value="<?php echo $row['fullname']; ?>">
