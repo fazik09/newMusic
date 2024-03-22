@@ -1,45 +1,11 @@
-<?php
-// Начало сессии для работы с переменными сессии
-session_start();
-
-// Подключение файла с настройками соединения с базой данных
-require_once("../../config/connection.php");
-
-// Обработка формы регистрации
-if (isset($_POST['signUp'])) {
-    // Проверка заполнения всех необходимых полей
-    if (
-        isset($_POST['Name'], $_POST['Password'], $_POST['Email'], $_POST['Phone']) &&
-        !empty($_POST['Name']) && !empty($_POST['Password']) &&
-        !empty($_POST['Email']) && !empty($_POST['Phone'])
-    ) {
-        // Получение значений из формы
-        $name = $_POST['Name'];
-        $pass = $_POST['Password'];
-        $email = $_POST['Email'];
-        $phone = $_POST['Phone'];
-
-        // Подготовка SQL-запроса для вставки данных в базу данных
-        $query = "INSERT INTO users (`username`, `password`, `email`, `phone`) 
-					  VALUES ('$name', '$pass', '$email', '$phone')";
-
-        // Выполнение запроса
-        mysqli_query($conn, $query);
-
-        // Установка сессии для обозначения успешного входа
-        $_SESSION["logIn"] = "1";
-
-        // Перенаправление на главную страницу
-        header("Location: ../../index.php");
-    }
-}
-// Обработка формы входа
-elseif (isset($_POST['logIn'])) {
-    // Перенаправление на страницу входа
-    header("Location: ../../Login/web/index.php");
-}
+<!-- Author: W3layouts
+     Author URL: http://w3layouts.com
+     License: Creative Commons Attribution 3.0 Unported
+     License URL: http://creativecommons.org/licenses/by/3.0/ -->
+<?php 
+	session_start();
 ?>
-<!DOCTYPE HTML>
+	 <!DOCTYPE HTML>
 <html lang="zxx">
 
 <head>
@@ -54,7 +20,6 @@ elseif (isset($_POST['logIn'])) {
     <!-- <link href="//fonts.googleapis.com/css?family=Reem+Kufi&amp;subset=arabic" rel="stylesheet">
          <link href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet"> -->
     <!-- //Web Fonts -->
-
 </head>
 
 <body>
@@ -67,19 +32,19 @@ elseif (isset($_POST['logIn'])) {
         <form action="" method="post">
             <div class="form-style-agile">
                 <label for="Name">Username <i class="fas fa-user"></i></label>
-                <input placeholder="Username (user123)" name="Name" type="text" id="Name" maxlength="20" pattern="[a-zA-Z0-9_]{3,}" title="Логин должен содержать только буквы, цифры и подчеркивания (минимум 3 символа)" required>
+                <input placeholder="Username" name="Name" type="text" id="Name">
             </div>
             <div class="form-style-agile">
                 <label for="Password">Password <i class="fas fa-unlock-alt"></i></label>
-                <input placeholder="Password (Password123!)" name="Password" type="password" id="Password" minlength="8" title="Введите корректный адрес электронной почты" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+])[A-Za-z\d!@#$%^&*()_+]{8,}$" title="Пароль должен содержать как минимум одну букву верхнего и нижнего регистра, одну цифру и один специальный символ (минимум 8 символов)" required>
+                <input placeholder="Password" name="Password" type="password" id="Password">
             </div>
             <div class="form-style-agile">
                 <label for="Email">Email <i class="fas fa-envelope"></i></label>
-                <input placeholder="Email (user@example.com)" name="Email" type="text" id="Email pattern='[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}'" required>
+                <input placeholder="Email" name="Email" type="text" id="Email">
             </div>
             <div class="form-style-agile">
                 <label for="Phone">Phone <i class="fas fa-phone"></i></label>
-                <input placeholder="Phone (+992 (92) 123-45-67)" name="Phone" type="text" id="Phone">
+                <input placeholder="Phone" name="Phone" type="text" id="Phone">
             </div>
             <!-- Checkbox -->
             <div class="wthree-text">
@@ -140,7 +105,47 @@ elseif (isset($_POST['logIn'])) {
 
 </html>
 
+<?php
+	// Начало сессии для работы с переменными сессии
+	
 
+	// Подключение файла с настройками соединения с базой данных
+	require_once("../../config/connection.php");
+
+	// Обработка формы регистрации
+	if (isset($_POST['signUp']) && !empty($_POST['signUp'])) {
+		// Проверка заполнения всех необходимых полей
+		if (
+			isset($_POST['Name'], $_POST['Password'], $_POST['Email'], $_POST['Phone']) &&
+			!empty($_POST['Name']) && !empty($_POST['Password']) &&
+			!empty($_POST['Email']) && !empty($_POST['Phone'])
+		) {
+			// Получение значений из формы
+			$name = $_POST['Name'];
+			$pass = $_POST['Password'];
+			$email = $_POST['Email'];
+			$phone = $_POST['Phone'];
+
+			// Подготовка SQL-запроса для вставки данных в базу данных
+			$query = "INSERT INTO users (`username`, `password`, `email`, `phone`) 
+					  VALUES ('$name', '$pass', '$email', '$phone')";
+
+			// Выполнение запроса
+			mysqli_query($conn, $query);
+
+			// Установка сессии для обозначения успешного входа
+			$_SESSION["logIn"] = "1";
+
+			// Перенаправление на главную страницу
+			header("Location: ../../index.php");
+		}
+	} 
+	// Обработка формы входа
+	elseif (isset($_POST['logIn']) && !empty($_POST['logIn'])) {
+		// Перенаправление на страницу входа
+		header("Location: ../../Login/web/index.php");
+	}
+?>
 
 <!-- HTML-код остается без изменений -->
 
