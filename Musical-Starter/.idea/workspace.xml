@@ -4,9 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="b731924e-9a82-4fb9-9f3f-f2c451add31c" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
+=======
+    <list default="true" id="b731924e-9a82-4fb9-9f3f-f2c451add31c" name="Changes" comment="" />
+>>>>>>> a186eec1414b8cb70e5fb75b3d9ebdcb8513ae95
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -14,9 +18,6 @@
   </component>
   <component name="ComposerSettings">
     <execution />
-  </component>
-  <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP" />
   <component name="ProjectColorInfo">{
@@ -32,13 +33,11 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
     "settings.editor.selected.configurable": "reference.webide.settings.project.settings.php",
     "vue.rearranger.settings.migration": "true"
   }
@@ -52,8 +51,12 @@
       <option name="presentableId" value="Default" />
       <updated>1710747317646</updated>
       <workItem from="1710747326527" duration="98000" />
+<<<<<<< HEAD
       <workItem from="1710747458753" duration="20528000" />
       <workItem from="1711088692623" duration="1629000" />
+=======
+      <workItem from="1710747458753" duration="11575000" />
+>>>>>>> a186eec1414b8cb70e5fb75b3d9ebdcb8513ae95
     </task>
     <servers />
   </component>

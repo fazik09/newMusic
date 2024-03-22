@@ -308,7 +308,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                                     value="DELETE">DELETE</button></td>
                                         </form>
 										<form action="albomupdate.php" method="get">
-                                            <input type="hidden" name="id" value="<?=$rows['fullname']?>">
+                                            <input type="hidden" name="id" value="<?=$rows['id']?>">
                                             <td><button type="submit" class="btn btn-info"
                                                     value="UPDATE">UPDATE</button></td>
                                         </form>

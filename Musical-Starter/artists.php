@@ -185,13 +185,13 @@ Author URL: http://w3layouts.com
                     <li class="active"><i class="fas fa-angle-right mx-2"></i>Артисты</li>
                 </ul>
                 <br><br>
-               
             </div>
         </div>
     </section>
     <!-- //web/inner banner -->
-
+    
     <!-- classes section -->
+    
     <div class="team-area pt-5" id="team">
         <div class="container py-md-5 py-md-4 py-2">
             <h3 class="title-style text-capitalize text-center">Наши эксперт <span>Команда</span> Будут помогать <span>Вам</span>
@@ -216,8 +216,10 @@ Author URL: http://w3layouts.com
                                             <li><a href="#url"><i class="fab fa-facebook-f"></i></a></li>
                                             <li><a href="#url"><i class="fab fa-twitter"></i></a></li>
                                             <li><a href="#url"><i class="fab fa-linkedin-in"></i></a></li>
-                                            <input type="hidden" name="id" value="<?=$name?>">
-                                            <button type="submit" name="addMusic" class="music-button">Подробнее</button>
+                                            <form action="minimal_admin_panel/web/index.php" method="get">
+                                                <input type="hidden" name="id" value="<?=$name?>">
+                                                <button type="submit" name="addMusic" class="music-button">Подробнее</button>
+                                            </form>
                                         </ul>
                                     </div>
                                 </div>

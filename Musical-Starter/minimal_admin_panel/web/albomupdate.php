@@ -1,9 +1,30 @@
-global$conn; global$conn; global$conn; global$conn; global$conn; global$conn; <!--
+<!--
 Author: W3layouts
 Author URL: http://w3layouts.com
 License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
 -->
+<?php
+    session_start();
+    require_once ("../../config/connection.php");
+    if (isset($_POST['submit'])) {
+        $aname = $_GET['id'];
+        $name = $_POST['albomName'];
+        $artistname = $_POST['artistName'];
+        $doc = $_POST['doc'];
+        $sql = "SELECT id FROM artist WHERE fullname = '$artistname';";
+        $result = mysqli_query($conn, $sql);
+        $artist_id = 0;
+        while ($row = mysqli_fetch_assoc($result)) {
+            $artist_id = $row['id'];
+        }
+        echo $aname;
+        $q = "UPDATE alboms SET fullname = '$name', create_date = '$doc', artist_id = '$artist_id' WHERE id='$aname';";
+        mysqli_query($conn, $q);
+        header("Location: listAlboms.php");
+    }
+?>
+?>
 <!DOCTYPE HTML>
 <html>
 
@@ -318,7 +339,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <?php
                             require_once ("../../config/connection.php");
                             $name = $_GET['id'];
-                            $sql = "SELECT * FROM alboms WHERE fullname = '$name'";
+                            $sql = "SELECT * FROM alboms WHERE id = '$name'";
                             $res = mysqli_query($conn, $sql);
                             while ($row = mysqli_fetch_assoc($res)) {
                                 $fname = $row['fullname'];
@@ -333,7 +354,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         ?>
                         <div class="form-group">
                             <label for="name">Name:</label>
-                            <input type="text" id="name" name="name" value="<?=$fname?>">
+                            <input type="text" id="name" name="albomName" value="<?=$fname?>">
                         </div>
                         <div class="form-group">
                             <label for="addd">Executor:</label>

@@ -247,7 +247,7 @@ Author URL: http://w3layouts.com
 
         </div>
     </section>
-    <div style="margin: 30px 30px; width: 500px">
+    <div style="margin: 30px 30px; width: 100%">
         <?php
                 require_once("config/connection.php");
                 $nnn = $_POST['nameOfAlbom'];
@@ -258,7 +258,11 @@ Author URL: http://w3layouts.com
                 $query = "SELECT fullname FROM music
                 WHERE albom_id = '$id';";
                 $result = mysqli_query($conn, $query);
-                
+                if (mysqli_num_rows($result) == 0) {
+                    ?>
+                    <h1 style="text-align: center">No any music in this album!</h1>
+                        <?php
+                }
                 while ($row = mysqli_fetch_assoc($result)) {
                     ?>
                     <form action="assets/audio/web/index.php" method="get">
@@ -268,20 +272,9 @@ Author URL: http://w3layouts.com
                             <?=$row['fullname']?>
                          </button>
                         </form>
-                        
-                    <?php 
-                        if ($_SESSION["logIn"] == "1") {
-                    ?>
-                    <form action="delete.php" method="get">
-                        <input type="hidden" name="id" value="<?php echo $row['fullname']; ?>">
-                        <button class="bright-music-button" name="delete"><i class="fas fa-trash-alt"></i>DELETE</button>
-                    </form>
-                         <br><br><br>
-                         <?php
-                        } 
-                        else {
-                            echo "<br><br>";
-                        }
+
+                    <?php
+
                 }
                 ?>
             <!-- <button type="submit" class="bright-music-button">
